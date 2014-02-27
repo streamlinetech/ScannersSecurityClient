@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Runtime.Serialization.Json;
 using Streamline.Security.Scanners.Core;
 using Streamline.Security.Scanners.Core.Dtos;
 using Streamline.Security.Scanners.Core.Exceptions;
@@ -22,7 +25,7 @@ namespace Terminal
 				// Bogus Ability
 				result = SecurityClient.IsUserInAbility("http://api-authorization.common.streamlinedb.dev/v1/", activeDirectoryId, "Bogus");
 				Console.WriteLine("Bogus Ability, Should be false: {0}", result);
-				
+
 				// Empty Array 
 				result = SecurityClient.IsUserInAbility("http://api-authorization.common.streamlinedb.dev/v1/", new ActiveDirectoryBasedAuthorizationRequest(activeDirectoryId, Enumerable.Empty<string>()));
 				Console.WriteLine("Empty Array, Should be false: {0}", result);

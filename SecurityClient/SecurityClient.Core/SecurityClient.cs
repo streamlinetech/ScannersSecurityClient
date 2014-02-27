@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using RestSharp;
-using RestSharp.Extensions;
 using Streamline.Security.Scanners.Core.Dtos;
 using Streamline.Security.Scanners.Core.Exceptions;
 
@@ -14,7 +11,7 @@ namespace Streamline.Security.Scanners.Core
 		/// <summary>
 		/// The request url
 		/// </summary>
-		public static string RequestUrl { get; set; }
+		public static Uri RequestUrl { get; set; }
 
 		/// <summary>
 		/// Determines if a User is in an Ability
@@ -58,23 +55,23 @@ namespace Streamline.Security.Scanners.Core
 		/// <returns>True if the user is in the ability, false otherwise</returns>
 		public static bool IsUserInAbility(string baseUrl, ActiveDirectoryBasedAuthorizationRequest authorizationRequest)
 		{
+			var isUserInAbility = false;
 			if (!ValidateRequest(authorizationRequest))
 				return false;
+
 			var relativeUrl = "providers/activedirectory";
 			if (!baseUrl.Contains("/v1"))
 				relativeUrl += "v1/" + relativeUrl;
 
-			var client = new RestClient(baseUrl);
-			var request = new RestRequest(relativeUrl, Method.POST);
-			
-			RequestUrl = baseUrl + "/" + relativeUrl;
-			request.RequestFormat = DataFormat.Json;
-			request.AddBody(authorizationRequest);
+			RequestUrl = new Uri(new Uri(baseUrl), relativeUrl);
+			RequestUrl.MakeResourceRequest().Post(authorizationRequest, (exception, response) =>
+																		{
+																			if (response != null)
+																				isUserInAbility = response.StatusCode.IsSuccess();
+																		});
 
-			var response = client.Execute(request);
-			if (response.StatusCode == HttpStatusCode.InternalServerError)
-				throw new SecurityHttpException(response);
-			return response.StatusCode == HttpStatusCode.OK;
+
+			return isUserInAbility;
 		}
 
 		static bool ValidateRequest(ActiveDirectoryBasedAuthorizationRequest authorizationRequest)

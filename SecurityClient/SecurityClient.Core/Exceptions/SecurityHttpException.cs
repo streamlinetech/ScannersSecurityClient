@@ -1,14 +1,13 @@
 using System;
-using RestSharp;
+using System.Net;
 
 namespace Streamline.Security.Scanners.Core.Exceptions
 {
 	public class SecurityHttpException : Exception
 	{
-		public IRestResponse Response { get; set; }
+		public HttpWebResponse Response { get; set; }
 
-		public SecurityHttpException(IRestResponse response)
-			: base(response.ErrorMessage, response.ErrorException)
+		public SecurityHttpException(HttpWebResponse response)
 		{
 			Response = response;
 		}
