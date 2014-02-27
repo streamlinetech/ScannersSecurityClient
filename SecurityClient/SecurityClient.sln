@@ -14,6 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{05B226
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityClient.Core.Tests", "SecurityClient.Core.Tests\SecurityClient.Core.Tests.csproj", "{C84D7D28-25E6-4CF2-8D80-4EAA55FA7689}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1723887-88ED-4681-B70D-4BCA8ADF7AB0}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec.xsd = nuspec.xsd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
