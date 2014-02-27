@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using RestSharp;
-using SecurityClient.Core.Dtos;
-using SecurityClient.Core.Exceptions;
+using RestSharp.Extensions;
+using Streamline.Security.Scanners.Core.Dtos;
+using Streamline.Security.Scanners.Core.Exceptions;
 
-namespace SecurityClient.Core
+namespace Streamline.Security.Scanners.Core
 {
 	public static class SecurityClient
 	{
+		/// <summary>
+		/// The request url
+		/// </summary>
+		public static string RequestUrl { get; set; }
+
 		/// <summary>
 		/// Determines if a User is in an Ability
 		/// 
@@ -55,11 +60,17 @@ namespace SecurityClient.Core
 		{
 			if (!ValidateRequest(authorizationRequest))
 				return false;
-			
+			var relativeUrl = "providers/activedirectory";
+			if (!baseUrl.Contains("/v1"))
+				relativeUrl += "v1/" + relativeUrl;
+
 			var client = new RestClient(baseUrl);
-			var request = new RestRequest("v1/providers/activedirectory", Method.POST);
-			request.AddBody(authorizationRequest);
+			var request = new RestRequest(relativeUrl, Method.POST);
+			
+			RequestUrl = baseUrl + "/" + relativeUrl;
 			request.RequestFormat = DataFormat.Json;
+			request.AddBody(authorizationRequest);
+
 			var response = client.Execute(request);
 			if (response.StatusCode == HttpStatusCode.InternalServerError)
 				throw new SecurityHttpException(response);

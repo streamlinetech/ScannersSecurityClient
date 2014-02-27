@@ -7,8 +7,8 @@
     <ProjectGuid>{16A897A2-2BFF-4F8A-BE2D-F55A55342588}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SecurityClient.Core</RootNamespace>
-    <AssemblyName>SecurityClient.Core</AssemblyName>
+    <RootNamespace>Streamline.Security.Scanners.Core</RootNamespace>
+    <AssemblyName>Streamline.Security.Scanners.Core</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

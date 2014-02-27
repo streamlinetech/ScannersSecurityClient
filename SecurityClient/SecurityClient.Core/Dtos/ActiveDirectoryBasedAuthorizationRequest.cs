@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
-namespace SecurityClient.Core.Dtos
+namespace Streamline.Security.Scanners.Core.Dtos
 {
 	public class ActiveDirectoryBasedAuthorizationRequest
 	{

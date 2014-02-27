@@ -1,7 +1,7 @@
 using System;
 using RestSharp;
 
-namespace SecurityClient.Core.Exceptions
+namespace Streamline.Security.Scanners.Core.Exceptions
 {
 	public class SecurityHttpException : Exception
 	{

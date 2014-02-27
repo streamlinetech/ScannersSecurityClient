@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SecurityClient.Core.Tests")]
+[assembly: AssemblyTitle("Terminal")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SecurityClient.Core.Tests")]
+[assembly: AssemblyProduct("Terminal")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("588227ab-e55c-436d-90e1-0adb79409c74")]
+[assembly: Guid("9fb21b96-28fe-470e-aad8-234b1f81f489")]
 
 // Version information for an assembly consists of the following four values:
 //
