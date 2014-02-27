@@ -4,7 +4,7 @@
     <version>$version$</version>
     <authors>Streamline Technology</authors>
     <owners />
-    <id>Scanner Security Client</id>
+    <id>Scanners.Security.Client</id>
 		<title>Scanner Application's Security Client</title>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Scanner Application's security client to validate abilities</description>
